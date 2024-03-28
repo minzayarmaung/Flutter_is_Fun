@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:todolistapp/constraints/colors.dart';
+import '../constraints/colors.dart';
+import '../widgets/todo_items.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -29,7 +30,12 @@ class Home extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 30, fontWeight: FontWeight.w500),
                         ),
-                      )
+                      ),
+                      ToDoItem(),
+                      ToDoItem(),
+                      ToDoItem(),
+                      ToDoItem(),
+                      ToDoItem(),
                     ],
                   ),
                 )
