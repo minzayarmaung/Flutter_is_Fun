@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:weatherapp/constraints/colors.dart';
 import 'package:weatherapp/models/weather_model.dart';
+import 'package:weatherapp/pages/choose_location.dart';
 import 'package:weatherapp/service/weather_service.dart';
 
 class WeatherPage extends StatefulWidget {
@@ -72,6 +74,22 @@ class _WeatherPageState extends State<WeatherPage> {
             Text('${_weather?.temperature.round()}°C')
           ],
         ),
+      ),
+      appBar: AppBar(
+        backgroundColor: tdBGColor,
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {},
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ChooseLocation()));
+            },
+          )
+        ],
       ),
     );
   }
