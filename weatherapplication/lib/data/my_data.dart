@@ -1,10 +1,1 @@
-import 'package:flutter/material.dart';
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
+String API_KEY = "c443ad43f345e1f404c5d16b3b0ed4f7";
