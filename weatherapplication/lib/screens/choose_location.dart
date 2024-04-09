@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:weatherapplication/constraints/colors.dart';
 
 class ChooseLocation extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -59,19 +60,30 @@ class _ChooseLocationState extends State<ChooseLocation> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(20)),
+        color: Colors.grey.withOpacity(0.2), // Adjust opacity for transparency
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: TextField(
         //onChanged: (value) => ,
+        style: TextStyle(color: Colors.white), // Change text color
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(0),
+          contentPadding:
+              EdgeInsets.symmetric(vertical: 10), // Adjust vertical padding
           prefixIcon: Icon(
             Icons.search,
-            color: Colors.black,
+            color: Colors.white, // Change icon color
+            size: 20,
+          ),
+          suffixIcon: Icon(
+            Icons.mic,
+            color: Colors.white, // Change icon color
             size: 20,
           ),
           prefixIconConstraints: BoxConstraints(maxHeight: 20, minHeight: 20),
+          suffixIconConstraints: BoxConstraints(
+              maxHeight: 20, minHeight: 20), // Added constraint for mic icon
           border: InputBorder.none,
-          hintText: 'Search a new City',
+          hintText: ' Search for a city or airport',
           hintStyle: TextStyle(color: Colors.grey),
         ),
       ),
