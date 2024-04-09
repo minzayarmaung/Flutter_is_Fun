@@ -33,6 +33,37 @@ class _ChooseLocationState extends State<ChooseLocation> {
             child: Column(
               children: [
                 searchBox(),
+                Padding(padding: EdgeInsets.only(bottom: 30)),
+                Container(
+                  height: 300, // Adjust this value as needed
+                  child: Card(
+                    color: Colors.grey.withOpacity(0.1),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            'Card Title',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                          subtitle: Text(
+                            'Card Subtitle',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ),
+                        Expanded(
+                          child: Image.network(
+                            'https://i.pinimg.com/originals/bd/8b/ff/bd8bffd78009eab632d34294f1b760bb.gif', // Replace with your GIF URL
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Expanded(
                   child: ListView.builder(
                     itemCount: locations.length,
