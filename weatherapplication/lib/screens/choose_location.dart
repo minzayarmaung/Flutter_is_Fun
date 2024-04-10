@@ -54,8 +54,70 @@ class _ChooseLocationState extends State<ChooseLocation> {
                           ),
                         ),
                         Expanded(
-                          child: Image.network(
-                            'https://i.pinimg.com/originals/bd/8b/ff/bd8bffd78009eab632d34294f1b760bb.gif', // Replace with your GIF URL
+                          child: Image.asset(
+                            'assets/animations/nightTime.gif', // Replace with your GIF URL
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.only(bottom: 10)),
+                Container(
+                  height: 300,
+                  child: Card(
+                    color: Colors.lightBlue.withOpacity(0.3),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            'Card Title',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                          subtitle: Text(
+                            'Card Subtitle',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ),
+                        Expanded(
+                          child: Image.asset(
+                            'assets/animations/dayLight.gif', // Replace with your GIF URL
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.only(bottom: 30)),
+                Container(
+                  height: 350,
+                  child: Card(
+                    color: Colors.lightBlue.withOpacity(0.3),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            'Card Title',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                          subtitle: Text(
+                            'Card Subtitle',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ),
+                        Expanded(
+                          child: Image.asset(
+                            'assets/animations/dayLight.gif', // Replace with your GIF URL
                             width: double.infinity,
                             fit: BoxFit.cover,
                           ),
@@ -71,8 +133,6 @@ class _ChooseLocationState extends State<ChooseLocation> {
                       return ListTile(
                         title: Text(locations[index]),
                         onTap: () {
-                          // Handle the tap event, for example, show details in a card
-                          // For now, let's just print the selected location
                           print('Selected location: ${locations[index]}');
                         },
                       );
