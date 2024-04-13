@@ -33,97 +33,53 @@ class _ChooseLocationState extends State<ChooseLocation> {
             child: Column(
               children: [
                 searchBox(),
-                Padding(padding: EdgeInsets.only(bottom: 30)),
-                Container(
-                  height: 300, // Adjust this value as needed
-                  child: Card(
-                    color: Colors.grey.withOpacity(0.1),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text(
-                            'Card Title',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                          subtitle: Text(
-                            'Card Subtitle',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
-                        ),
-                        Expanded(
-                          child: Image.asset(
-                            'assets/animations/nightTime.gif', // Replace with your GIF URL
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
                 Padding(padding: EdgeInsets.only(bottom: 10)),
                 Container(
-                  height: 300,
-                  child: Card(
-                    color: Colors.lightBlue.withOpacity(0.3),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text(
-                            'Card Title',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
+                    height: 300,
+                    child: Card(
+                      color: Colors.lightBlue.withOpacity(0.3),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text(
+                              'Card Title',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                            subtitle: Text(
+                              'Card Subtitle',
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
                             ),
                           ),
-                          subtitle: Text(
-                            'Card Subtitle',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
-                        ),
-                        Expanded(
-                          child: Image.asset(
-                            'assets/animations/dayLight.gif', // Replace with your GIF URL
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(padding: EdgeInsets.only(bottom: 30)),
-                Container(
-                  height: 350,
-                  child: Card(
-                    color: Colors.lightBlue.withOpacity(0.3),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text(
-                            'Card Title',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
+                          Expanded(
+                            child: Image.asset(
+                              'assets/animations/dayLight.gif', // Replace with your GIF URL
+                              width: double.infinity,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          subtitle: Text(
-                            'Card Subtitle',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
+                        ],
+                      ),
+                    )),
+                // Card 2
+                Card(
+                  color: Colors.lightGreenAccent.withOpacity(0.3),
+                  child: Column(
+                    children: const [
+                      ListTile(
+                        title: Text(
+                          'Card Title 2',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                        Expanded(
-                          child: Image.asset(
-                            'assets/animations/dayLight.gif', // Replace with your GIF URL
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
+                        subtitle: Text(
+                          'Subtitle',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 Expanded(
