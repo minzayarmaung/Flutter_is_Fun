@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:weatherapplication/constraints/colors.dart';
 
 class ChooseLocation extends StatefulWidget {
@@ -33,53 +34,151 @@ class _ChooseLocationState extends State<ChooseLocation> {
             child: Column(
               children: [
                 searchBox(),
-                Padding(padding: EdgeInsets.only(bottom: 10)),
+                Padding(padding: EdgeInsets.only(bottom: 30)),
+                // Card 1
                 Container(
-                    height: 300,
-                    child: Card(
-                      color: Colors.lightBlue.withOpacity(0.3),
-                      child: Column(
-                        children: [
-                          ListTile(
-                            title: Text(
-                              'Card Title',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
+                  height: 150,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                    color: Colors.lightBlue.withOpacity(0.3),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                            child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.asset(
+                            'assets/animations/Raining.gif',
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                        Column(
+                          children: [
+                            ListTile(
+                              title: Text(
+                                'My Location',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(
+                                DateFormat('EEEE dd • ')
+                                    .add_jm()
+                                    .format(DateTime.now()),
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.white),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                // Card 2
+                Container(
+                  height: 150,
+                  child: Card(
+                    color: Colors.lightGreenAccent.withOpacity(0.3),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                            child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.asset(
+                            'assets/animations/dayLight.gif',
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                        Column(
+                          children: const [
+                            ListTile(
+                              title: Text(
+                                'Card Title 2',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              subtitle: Text(
+                                'Subtitle',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
                               ),
                             ),
-                            subtitle: Text(
-                              'Card Subtitle',
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
-                            ),
-                          ),
-                          Expanded(
-                            child: Image.asset(
-                              'assets/animations/dayLight.gif', // Replace with your GIF URL
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
-                // Card 2
-                Card(
-                  color: Colors.lightGreenAccent.withOpacity(0.3),
-                  child: Column(
-                    children: const [
-                      ListTile(
-                        title: Text(
-                          'Card Title 2',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
+                          ],
                         ),
-                        subtitle: Text(
-                          'Subtitle',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
+                      ],
+                    ),
+                  ),
+                ),
+                // Card 3
+                Container(
+                  height: 150,
+                  child: Card(
+                    color: Colors.lightGreenAccent.withOpacity(0.3),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                            child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.asset(
+                            'assets/animations/nightTime.gif',
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                        Column(
+                          children: const [
+                            ListTile(
+                              title: Text(
+                                'Card Title 2',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              subtitle: Text(
+                                'Subtitle',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ),
+                ),
+                // Card 4
+                Container(
+                  height: 150,
+                  child: Card(
+                    color: Colors.lightGreenAccent.withOpacity(0.3),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                            child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.asset(
+                            'assets/animations/Snowing.gif',
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                        Column(
+                          children: const [
+                            ListTile(
+                              title: Text(
+                                'Card Title 2',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              subtitle: Text(
+                                'Subtitle',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
@@ -134,6 +233,20 @@ class _ChooseLocationState extends State<ChooseLocation> {
           hintStyle: TextStyle(color: Colors.grey),
         ),
       ),
+    );
+  }
+}
+
+class getCurrentTime extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final currentTime = DateTime.now();
+    final hour = currentTime.hour;
+
+    return Text(
+      'Current Time',
+      style: TextStyle(
+          color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
     );
   }
 }
