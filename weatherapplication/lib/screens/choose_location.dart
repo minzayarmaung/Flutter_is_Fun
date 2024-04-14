@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
+import 'dart:async';
+import 'package:geocoding/geocoding.dart';
 import 'package:weatherapplication/constraints/colors.dart';
 
 class ChooseLocation extends StatefulWidget {
@@ -11,6 +14,35 @@ class ChooseLocation extends StatefulWidget {
 class _ChooseLocationState extends State<ChooseLocation> {
   List<String> locations = [];
   TextEditingController _searchController = TextEditingController();
+  String _location = '';
+
+  @override
+  void initState() {
+    super.initState();
+    retrieveLocation();
+  }
+
+  void retrieveLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      try {
+        List<Placemark> placemarks = await placemarkFromCoordinates(
+            position.latitude, position.longitude);
+        setState(() {
+          _location =
+              '${placemarks[0].locality ?? placemarks[0].subAdministrativeArea ?? placemarks[0].subLocality}, ${placemarks[0].administrativeArea}';
+        });
+      } catch (e) {
+        print('There was a problem with reverse geocoding: $e');
+        setState(() {
+          _location = '${position.latitude}, ${position.longitude}';
+        });
+      }
+    } catch (e) {
+      print('There was a problem retrieving the location: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +88,9 @@ class _ChooseLocationState extends State<ChooseLocation> {
                           children: [
                             ListTile(
                               title: Text(
-                                'My Location',
+                                _location,
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 17,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -68,6 +100,33 @@ class _ChooseLocationState extends State<ChooseLocation> {
                                     .format(DateTime.now()),
                                 style: TextStyle(
                                     fontSize: 15, color: Colors.white),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 30),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: const [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 15),
+                                    child: Text(
+                                      'Text on the Left',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 15),
+                                    child: Text(
+                                      'Text on the Right',
+                                      style: TextStyle(
+                                          fontSize: 15, color: Colors.white),
+                                    ),
+                                  )
+                                ],
                               ),
                             )
                           ],
