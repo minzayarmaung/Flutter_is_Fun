@@ -103,29 +103,37 @@ class _ChooseLocationState extends State<ChooseLocation> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(bottom: 30),
+                              padding: EdgeInsets.only(bottom: 0),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: const [
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 15),
-                                    child: Text(
-                                      'Text on the Left',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.white,
+                                  Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 15, top: 40),
+                                      child: Text(
+                                        'Weather Condition : Clean',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 15),
-                                    child: Text(
-                                      'Text on the Right',
-                                      style: TextStyle(
-                                          fontSize: 15, color: Colors.white),
-                                    ),
-                                  )
+                                  Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, bottom: 35),
+                                        child: Text(
+                                          '33 °C',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white),
+                                        ),
+                                      )),
                                 ],
                               ),
                             )
@@ -135,11 +143,91 @@ class _ChooseLocationState extends State<ChooseLocation> {
                     ),
                   ),
                 ),
+
                 // Card 2
                 Container(
                   height: 150,
                   child: Card(
-                    color: Colors.lightGreenAccent.withOpacity(0.3),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                    color: Colors.lightBlue.withOpacity(0.3),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                            child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.asset(
+                            'assets/animations/Thunder.gif',
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                        Column(
+                          children: [
+                            ListTile(
+                              title: Text(
+                                _location,
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(
+                                DateFormat('EEEE dd • ')
+                                    .add_jm()
+                                    .format(DateTime.now()),
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.white),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: const [
+                                  Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 15, top: 40),
+                                      child: Text(
+                                        'Weather Condition : Clean',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, bottom: 35),
+                                        child: Text(
+                                          '33 °C',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white),
+                                        ),
+                                      )),
+                                ],
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+
+                // Card 3
+                Container(
+                  height: 150,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                    color: Colors.lightBlue.withOpacity(0.3),
                     child: Stack(
                       children: [
                         Positioned.fill(
@@ -151,95 +239,67 @@ class _ChooseLocationState extends State<ChooseLocation> {
                           ),
                         )),
                         Column(
-                          children: const [
+                          children: [
                             ListTile(
                               title: Text(
-                                'Card Title 2',
+                                _location,
                                 style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
+                                    fontSize: 17,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text(
-                                'Subtitle',
+                                DateFormat('EEEE dd • ')
+                                    .add_jm()
+                                    .format(DateTime.now()),
                                 style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
+                                    fontSize: 15, color: Colors.white),
                               ),
                             ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: const [
+                                  Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 15, top: 40),
+                                      child: Text(
+                                        'Weather Condition : Clean',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15, bottom: 35),
+                                        child: Text(
+                                          '33 °C',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white),
+                                        ),
+                                      )),
+                                ],
+                              ),
+                            )
                           ],
-                        ),
+                        )
                       ],
                     ),
                   ),
                 ),
-                // Card 3
-                Container(
-                  height: 150,
-                  child: Card(
-                    color: Colors.lightGreenAccent.withOpacity(0.3),
-                    child: Stack(
-                      children: [
-                        Positioned.fill(
-                            child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.asset(
-                            'assets/animations/nightTime.gif',
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                        Column(
-                          children: const [
-                            ListTile(
-                              title: Text(
-                                'Card Title 2',
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
-                              ),
-                              subtitle: Text(
-                                'Subtitle',
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+
                 // Card 4
-                Container(
-                  height: 150,
-                  child: Card(
-                    color: Colors.lightGreenAccent.withOpacity(0.3),
-                    child: Stack(
-                      children: [
-                        Positioned.fill(
-                            child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.asset(
-                            'assets/animations/Snowing.gif',
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                        Column(
-                          children: const [
-                            ListTile(
-                              title: Text(
-                                'Card Title 2',
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
-                              ),
-                              subtitle: Text(
-                                'Subtitle',
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+
                 Expanded(
                   child: ListView.builder(
                     itemCount: locations.length,

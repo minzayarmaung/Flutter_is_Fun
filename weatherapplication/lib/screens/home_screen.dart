@@ -47,10 +47,14 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
-        ),
+        leading: Builder(builder: (BuildContext context) {
+          return IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          );
+        }),
         actions: [
           IconButton(
             icon: Icon(Icons.add),
@@ -64,6 +68,20 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         systemOverlayStyle:
             const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: const [
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(color: Colors.blue),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+            )
+          ],
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(40, 1.2 * kToolbarHeight, 40, 20),
