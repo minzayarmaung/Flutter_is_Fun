@@ -74,12 +74,28 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.zero,
           children: const [
             DrawerHeader(
-              child: Text('Drawer Header'),
+              child: Text(
+                'Your Weather',
+                style: TextStyle(color: Colors.white, fontSize: 24.0),
+              ),
               decoration: BoxDecoration(color: Colors.blue),
             ),
             ListTile(
-              title: Text('Item 1'),
-            )
+              title: Text('Home'),
+            ),
+            ListTile(
+              title: Text('Search'),
+            ),
+            ListTile(title: Text('Help')),
+            ListTile(
+              title: Text('Settings'),
+            ),
+            ListTile(
+              title: Text('About'),
+            ),
+            // SwitchListTile(
+            //   title: Text('DarkMode'),
+            //   value: value, onChanged: onChanged)
           ],
         ),
       ),
