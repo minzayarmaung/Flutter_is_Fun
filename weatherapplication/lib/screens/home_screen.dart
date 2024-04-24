@@ -72,13 +72,34 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const [
+          children: [
             DrawerHeader(
-              child: Text(
-                'Your Weather',
-                style: TextStyle(color: Colors.white, fontSize: 24.0),
+              decoration: BoxDecoration(color: Colors.lightBlue),
+              child: Row(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: ClipOval(
+                      child: Image.asset('assets/profileImage.jpeg',
+                          fit: BoxFit.cover, width: 80, height: 80),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 20)),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        'Min Zayar Maung',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              decoration: BoxDecoration(color: Colors.blue),
             ),
             ListTile(
               title: Text('Home'),
@@ -94,8 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
               title: Text('About'),
             ),
             // SwitchListTile(
-            //   title: Text('DarkMode'),
-            //   value: value, onChanged: onChanged)
+            //     title: Text('DarkMode'), value: value, onChanged: onChanged)
           ],
         ),
       ),
