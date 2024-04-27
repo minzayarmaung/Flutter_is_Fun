@@ -103,9 +103,18 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               title: Text('Home'),
+              // onTap: () => {
+              //   setState(() {
+              //     print("Home Tapped !");
+              //   })
+              // },
             ),
             ListTile(
               title: Text('Search'),
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ChooseLocation()))
+              },
             ),
             ListTile(title: Text('Help')),
             ListTile(
