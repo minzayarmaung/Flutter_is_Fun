@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:weatherapplication/bloc/weather_bloc_bloc.dart';
 import 'package:weatherapplication/screens/choose_location.dart';
+import 'package:weatherapplication/screens/setting_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -103,11 +104,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               title: Text('Home'),
-              // onTap: () => {
-              //   setState(() {
-              //     print("Home Tapped !");
-              //   })
-              // },
+              onTap: () => {
+                setState(() {
+                  print("Home Tapped !");
+                })
+              },
             ),
             ListTile(
               title: Text('Search'),
@@ -119,9 +120,35 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(title: Text('Help')),
             ListTile(
               title: Text('Settings'),
+              onTap: () => {
+                Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            SettingsScreen(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          const begin = 0.0;
+                          const end = 1.0;
+                          const curve = Curves.ease;
+
+                          var tween = Tween(begin: begin, end: end)
+                              .chain(CurveTween(curve: curve));
+
+                          var fadeAnimation = animation.drive(tween);
+
+                          return FadeTransition(
+                            opacity: fadeAnimation,
+                            child: child,
+                          );
+                        }))
+              },
             ),
             ListTile(
               title: Text('About'),
+            ),
+            ListTile(
+              title: Text('Dark Mode'),
             ),
             // SwitchListTile(
             //     title: Text('DarkMode'), value: value, onChanged: onChanged)
