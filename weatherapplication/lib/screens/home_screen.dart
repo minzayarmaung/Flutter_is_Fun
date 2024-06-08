@@ -121,27 +121,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               title: Text('Settings'),
               onTap: () => {
-                Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                        pageBuilder: (context, animation, secondaryAnimation) =>
-                            SettingsScreen(),
-                        transitionsBuilder:
-                            (context, animation, secondaryAnimation, child) {
-                          const begin = 0.0;
-                          const end = 1.0;
-                          const curve = Curves.ease;
-
-                          var tween = Tween(begin: begin, end: end)
-                              .chain(CurveTween(curve: curve));
-
-                          var fadeAnimation = animation.drive(tween);
-
-                          return FadeTransition(
-                            opacity: fadeAnimation,
-                            child: child,
-                          );
-                        }))
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingsScreen()))
               },
             ),
             ListTile(
