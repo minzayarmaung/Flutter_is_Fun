@@ -11,7 +11,6 @@ class ThemeProvider extends ChangeNotifier {
 
   set themeData(ThemeData themeData) {
     _themeData = themeData;
-
     notifyListeners();
   }
 
