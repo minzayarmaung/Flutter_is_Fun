@@ -7,6 +7,14 @@ import 'package:provider/provider.dart';
 class SongPage extends StatelessWidget {
   const SongPage({super.key});
 
+  // Convert Seconds into Min : Seconds
+  String formatTime(Duration duration) {
+    String twoDigitSeconds =
+        duration.inSeconds.remainder(60).toString().padLeft(2, '0');
+    String formattedTime = "${duration.inMinutes}:$twoDigitSeconds";
+    return formattedTime;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<PlaylistProvider>(builder: (context, value, child) {
@@ -92,22 +100,22 @@ class SongPage extends StatelessWidget {
                 // song duration progress
                 Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           // Start Time
-                          Text("0:00"),
+                          Text(formatTime(value.currentDuration)),
 
                           // Shuffle Icon
-                          Icon(Icons.shuffle),
+                          const Icon(Icons.shuffle),
 
                           // Repeat Icon
-                          Icon(Icons.repeat),
+                          const Icon(Icons.repeat),
 
                           // End Time
-                          Text("4:30"),
+                          Text(formatTime(value.totalDuration)),
                         ],
                       ),
                     ),
@@ -119,11 +127,15 @@ class SongPage extends StatelessWidget {
                             const RoundSliderThumbShape(enabledThumbRadius: 0),
                       ),
                       child: Slider(
-                          min: 0,
-                          max: 100,
-                          value: 30,
-                          activeColor: Colors.lightBlue.shade400,
-                          onChanged: (value) {}),
+                        min: 0,
+                        max: value.totalDuration.inSeconds.toDouble(),
+                        value: value.currentDuration.inSeconds.toDouble(),
+                        activeColor: Colors.lightBlue.shade400,
+                        onChanged: (double double) {},
+                        onChangeEnd: (double double) {
+                          value.seekTo(Duration(seconds: double.toInt()));
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -136,7 +148,7 @@ class SongPage extends StatelessWidget {
                     // Skip Previous
                     Expanded(
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: value.playPreviousSong,
                         child: const NeuBox(
                           child: Icon(Icons.skip_previous),
                         ),
@@ -147,11 +159,12 @@ class SongPage extends StatelessWidget {
 
                     // Play Pause
                     Expanded(
-                      flex: 3,
+                      flex: 2,
                       child: GestureDetector(
-                        onTap: () {},
-                        child: const NeuBox(
-                          child: Icon(Icons.play_arrow),
+                        onTap: value.pauseOrResume,
+                        child: NeuBox(
+                          child: Icon(
+                              value.isPlaying ? Icons.pause : Icons.play_arrow),
                         ),
                       ),
                     ),
@@ -161,7 +174,7 @@ class SongPage extends StatelessWidget {
                     // Skip Forward
                     Expanded(
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: value.playNextSong,
                         child: const NeuBox(
                           child: Icon(Icons.skip_next),
                         ),

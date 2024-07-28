@@ -21,27 +21,27 @@ class MyDrawer extends StatelessWidget {
 
           // Home Title
           Padding(
-              padding: EdgeInsets.only(left: 25, top: 25),
+              padding: const EdgeInsets.only(left: 25, top: 25),
               child: ListTile(
-                title: Text('H O M E'),
-                leading: Icon(Icons.home),
+                title: const Text('H O M E'),
+                leading: const Icon(Icons.home),
                 onTap: () {
                   Navigator.pop(context);
                 },
               )),
 
           Padding(
-              padding: EdgeInsets.only(left: 25, top: 0),
+              padding: const EdgeInsets.only(left: 25, top: 0),
               child: ListTile(
-                title: Text('S E T T I N G S'),
-                leading: Icon(Icons.settings),
+                title: const Text('S E T T I N G S'),
+                leading: const Icon(Icons.settings),
                 onTap: () {
                   Navigator.pop(context);
 
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SettingsPage(),
+                      builder: (context) => const SettingsPage(),
                     ),
                   );
                 },
@@ -49,18 +49,18 @@ class MyDrawer extends StatelessWidget {
 
           // Logout Title
           Padding(
-              padding: EdgeInsets.only(left: 25, top: 0),
+              padding: const EdgeInsets.only(left: 25, top: 0),
               child: ListTile(
-                title: Text('L O G O U T'),
-                leading: Icon(Icons.logout),
+                title: const Text('L O G O U T'),
+                leading: const Icon(Icons.logout),
                 onTap: () {},
               )),
           // About Title
           Padding(
-              padding: EdgeInsets.only(left: 25, top: 0),
+              padding: const EdgeInsets.only(left: 25, top: 0),
               child: ListTile(
-                title: Text('A B O U T '),
-                leading: Icon(Icons.info),
+                title: const Text('A B O U T '),
+                leading: const Icon(Icons.info),
                 onTap: () {},
               )),
 
