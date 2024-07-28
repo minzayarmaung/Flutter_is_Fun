@@ -10,25 +10,25 @@ class PlaylistProvider extends ChangeNotifier {
         songName: "About You",
         artistName: "The 1975",
         albumArtImagePath: "assets/images/the1975.jpeg",
-        audioPath: "assets/songs/AboutYou.mp3"),
+        audioPath: "assets/audio/AboutYou.mp3"),
     // Song 2
     Song(
         songName: "CruelSummer",
         artistName: "Taylor Swift",
         albumArtImagePath: "assets/images/taylorswift.jpeg",
-        audioPath: "assets/songs/cruelsummer.mp3"),
+        audioPath: "assets/audio/cruelsummer.mp3"),
     // Song 3
     Song(
         songName: "Heaven Sent",
         artistName: "Tevomxntana",
         albumArtImagePath: "assets/images/heavensent.jpg",
-        audioPath: "assets/songs/heavensent.mp3"),
+        audioPath: "assets/audio/heavensent.mp3"),
     // Song 4
     Song(
         songName: "Fortnight",
         artistName: "Taylor Swift",
         albumArtImagePath: "assets/images/taylor.jpg",
-        audioPath: "assets/songs/fortnight.mp3"),
+        audioPath: "assets/audio/fortnight.mp3"),
   ];
 
   // Current Song Playing Index
@@ -140,6 +140,11 @@ class PlaylistProvider extends ChangeNotifier {
   }
 
   // dispose the audio player
+  @override
+  void dispose() {
+    super.dispose();
+    _audioPlayer.dispose();
+  }
 
   /*
   G E T T E R S 
