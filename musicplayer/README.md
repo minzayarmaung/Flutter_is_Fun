@@ -6,6 +6,8 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
+![lofigif](https://drive.google.com/uc?export=view&id=1gMhuO3phffIZyh3XahxCcVsRBsS8B1C5)
+
 A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
