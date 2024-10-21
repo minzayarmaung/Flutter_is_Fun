@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -7,7 +8,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:weatherapplication/bloc/weather_bloc_bloc.dart';
 import 'package:weatherapplication/screens/choose_location.dart';
 import 'package:weatherapplication/screens/setting_screen.dart';
@@ -20,6 +23,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  File? _image;
   Widget getWeatherIcon(int code) {
     switch (code) {
       case > 200 && <= 300:
@@ -39,6 +43,24 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
       default:
         return Image.asset('assets/1.png');
+    }
+  }
+
+  Future<void> _pickImage(ImageSource source) async {
+    if (source == ImageSource.camera) {
+      final permissionStatus = await Permission.camera.request();
+      if (permissionStatus != PermissionStatus.granted) {
+        print("Camera Granted");
+        return;
+      }
+    }
+
+    final pickedFile = await ImagePicker().pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
     }
   }
 
@@ -78,24 +100,30 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(color: Colors.lightBlue),
               child: Row(
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: ClipOval(
-                      child: Image.asset('assets/profileImage.jpeg',
-                          fit: BoxFit.cover, width: 80, height: 80),
-                    ),
+                  GestureDetector(
+                    onTap: () {
+                      _showPicker(context);
+                    },
+                    child: CircleAvatar(
+                        radius: 50,
+                        backgroundImage: _image != null
+                            ? FileImage(_image!)
+                            : AssetImage('assets/profileImage.jpeg')
+                                as ImageProvider),
                   ),
                   Padding(padding: EdgeInsets.only(left: 20)),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text(
-                        'Min Zayar Maung',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Text(
+                          'Min Zayar Maung',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
@@ -369,6 +397,34 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  void _showPicker(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+              child: Wrap(
+            children: <Widget>[
+              ListTile(
+                leading: Icon(Icons.photo_library),
+                title: Text('Gallery'),
+                onTap: () {
+                  _pickImage(ImageSource.gallery);
+                  Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.photo_camera),
+                title: Text('Camera'),
+                onTap: () {
+                  _pickImage(ImageSource.camera);
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          ));
+        });
   }
 }
 
