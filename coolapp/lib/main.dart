@@ -5,11 +5,11 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:image_picker/image_picker.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -70,6 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(
@@ -79,6 +83,8 @@ class HomePage extends StatelessWidget {
 }
 
 class BusinessPage extends StatelessWidget {
+  const BusinessPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(
@@ -88,6 +94,8 @@ class BusinessPage extends StatelessWidget {
 }
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -131,15 +139,15 @@ class _ProfilePageState extends State<ProfilePage> {
               radius: 50,
               backgroundImage: _image != null
                   ? FileImage(_image!)
-                  : NetworkImage(
+                  : const NetworkImage(
                           'https://avatars.githubusercontent.com/u/94619791?v=4')
                       as ImageProvider<Object>?,
             ),
           ),
-          SizedBox(height: 50),
-          Text('Min Zayar Maung'),
-          Text('minzayarmaung.dev24@gmail.com'),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
+          const Text('Min Zayar Maung'),
+          const Text('minzayarmaung.dev24@gmail.com'),
+          const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
